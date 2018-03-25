@@ -4,3 +4,7 @@
 .mk-tombol_about{
 	background: #D3D3D3 !important;
 }
+.mk-main{
+	padding: 100px;
+	padding-top: 10px;
+}
