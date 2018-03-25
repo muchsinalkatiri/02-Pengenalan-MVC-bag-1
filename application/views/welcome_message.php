@@ -24,7 +24,7 @@
 				<form class="form-inline my-2 my-lg-0">
 					<ul class="navbar-nav mr-auto nav nav-pills">
 						<li class="nav-item">
-							<a class="nav-link active" href="#">About</a>
+							<a class="nav-link active mk-tombol_about" href="#">About</a>
 						</li>
 					</ul>
 				</form>
