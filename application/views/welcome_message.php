@@ -30,5 +30,11 @@
 				</form>
 			</div>
 		</nav>
+		<div class="jumbotron jumbotron-fluid text-center">
+			<div class="container">
+				<h1 class="display-4">Halo Sam</h1>
+				<p class="lead">02 Pengenalan MVC bag 1</p>
+			</div>
+		</div>
 	</body>
 </html>
