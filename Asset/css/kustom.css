@@ -1,10 +1,14 @@
 .mk-navbar{
-	background: #E0FFFF !important;
+	background: #b3c6ff !important;
 }
 .mk-tombol_about{
-	background: #D3D3D3 !important;
+	background: #e6ecff !important;
 }
 .mk-main{
 	padding: 100px;
 	padding-top: 10px;
 }
+.mk-jumbotron{
+	background: #e6ecff !important;
+}
+.m
