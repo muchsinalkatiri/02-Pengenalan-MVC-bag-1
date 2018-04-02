@@ -20,8 +20,15 @@ class Blog extends CI_Controller {
 	 */
 	public function index()
 	{
-		
+		// Query mengambil data dari tabel blog
+		$query = $this->db->get('blog');
+
+		// Variabel untuk parser data
+		$parser = array(
+			'artikel' => $query->result_array() // Data dijadikan dalam bentuk array
+		);
+
 		$this->load->view('header');
-		$this->load->view('main_blog');
+		$this->load->view('main_blog', $parser);
 	}
 }
