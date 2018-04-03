@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Blog extends CI_Controller {
+class Detail extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,11 +18,6 @@ class Blog extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	function __construct(){
-		parent::__construct();
-		$this->load->model('m_data_artikel');
-	}
-
 	public function index()
 	{
 		// Query mengambil data dari tabel blog
@@ -34,12 +29,6 @@ class Blog extends CI_Controller {
 		);
 
 		$this->load->view('header');
-		$this->load->view('main_blog', $parser);
-	}
-
-	public function detail(){
-		$data['data'] = $this->m_data_artikel->Get_single($this->uri->segment(3));
-		$this->load->view('header');
-		$this->load->view('detail',$data);
+		$this->load->view('main_detail_', $parser);
 	}
 }
