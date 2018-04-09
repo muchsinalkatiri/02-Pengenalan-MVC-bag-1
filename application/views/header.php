@@ -4,6 +4,7 @@
 		<title>CI3</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'Asset/css/bootstrap.min.css'; ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'Asset/css/kustom.css'; ?>">
+		<link href="<?php echo base_url(). 'Asset/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<?php echo base_url().'Asset/js/bootstrap.min.js'; ?>"></script>
 	</head>
 	<body>
@@ -19,6 +20,9 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url().'index.php/blog'; ?>">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url().'index.php/crud'; ?>">Crud</a>
 					</li>
 					<form class="form-inline my-2 my-lg-0">
       					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

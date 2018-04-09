@@ -11,7 +11,7 @@
           <hr>
 
           <!-- Date/Time -->
-          <p>Posted on <?php echo $data['tgl posting']; ?></p>
+          <p class="text-justify">Posted on <?php echo $data['tgl posting']; ?></p>
 
           <hr>
 

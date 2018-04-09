@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>HOME</title>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'Asset/css/bootstrap.min.css'; ?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'Asset/css/kustom.css'; ?>">
-		<script type="text/javascript" src="<?php echo base_url().'Asset/js/bootstrap.min.js'; ?>"></script>
-	</head>
-	<body>
 		<div class="container">
 			<!-- Page Heading -->
 			<h1 class="my-4">BLOG 
