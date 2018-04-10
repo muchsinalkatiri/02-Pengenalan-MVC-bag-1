@@ -3,21 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Crud extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_data_crud');
@@ -25,15 +10,27 @@ class Crud extends CI_Controller {
 
 	public function index()
 	{
-		$data1['query'] = $this->m_data_crud->Get_crud();
+		$data['query'] = $this->m_data_crud->Get_crud();
 		$this->load->view('header');
-		$this->load->view('main_crud', $data1);
+		$this->load->view('main_crud', $data);
 	}
 
 	public function tambah()
 	{
 		$this->load->view('header');
-		$this->load->view('main_tambah_artikel', $data1);
+		$this->load->view('main_tambah_artikel');
+	}
+
+	public	function tambah_aksi(){
+		$now = 'aa';
+    	$data = array(
+     	   	'title' => $this->input->post('title'),
+       		'content_artikel' => $this->input->post('content_artikel'),
+        	'images' => $this->input->post('images'),
+        	'tgl_posting' => date('Y-m-d')
+        	 );
+    	$this->m_data_crud->insert($data);
+    	redirect('crud');
 	}
 
 }

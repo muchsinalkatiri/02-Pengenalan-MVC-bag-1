@@ -1,4 +1,4 @@
-		<div class="container">
+ 		<div class="container">
 			<!-- Page Heading -->
 			<h1 class="my-4">BLOG 
 			<small>Artikel</small>
