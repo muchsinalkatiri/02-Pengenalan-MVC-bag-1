@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="padding-top: 20px;" >
     <div class="col-md-12">
     <h3><span class="fa fa-plus"></span>  Data Artikel</h3>          
-    <a style="margin-bottom:20px" href="crud/tambah" class="btn btn-info col-md-2 test"><span class="fa fa-plus"> Tambah Artikel</span></a>    
+    <a style=" margin-bottom:20px" href="crud/tambah" class="btn btn-info col-md-2 test"><span class="fa fa-plus"> Tambah Artikel</span></a>    
     <br/>
     <br/>
    </div> 

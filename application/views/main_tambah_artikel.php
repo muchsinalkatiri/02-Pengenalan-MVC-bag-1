@@ -1,4 +1,4 @@
-	<?php echo form_open(base_url('index.php/crud/tambah_aksi')); ?> 
+	<?php echo form_open_multipart(base_url('index.php/crud/tambah_aksi')); ?> 
 	<div class="container" style="padding-right: 500px; padding-top: 20px; ">
 		<div class="modal-content">
 			<div class="modal-header">
