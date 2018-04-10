@@ -11,4 +11,8 @@ class M_data_crud extends CI_Model{
 		$this->db->insert('blog', $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
         
 	}
+	function hapus_data($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
 }

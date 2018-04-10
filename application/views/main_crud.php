@@ -31,10 +31,10 @@
             <a  href="#" class="btn btn-success">
               <span class="fa fa-info-circle">  Detail</span>
             </a>
-            <a href="#" class="btn btn-primary">
+            <a href="#"  class="btn btn-primary">
               <span class="fa fa-edit">  Edit</span>
             </a>
-            <a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='#' }" class="btn btn-danger">
+            <a href="<?php echo base_url()."index.php/crud/hapus/".$b->id_blog ?> " onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')"  class="btn btn-danger">
               <span class="fa fa-trash">  Hapus</span>
             </a>
           </td>
