@@ -6,7 +6,7 @@
 					<a  class="btn" href="#"><span class="fa fa-arrow-left"></span>  Kembali</a>
 			</div>
 			<div class="modal-body">
-			   		<input type="hidden" name="id_blog" value="" />
+			   		<input type="hidden" class="form-control" placeholder="Group ID" name="id_blog">
 					<div class="form-group">
 						<label>Judul</label>
 						<input name="title" required="required" type="text" class="form-control" placeholder="judul artikel...">

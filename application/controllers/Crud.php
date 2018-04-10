@@ -44,8 +44,10 @@ class Crud extends CI_Controller {
 	}
 
 	public function hapus($id_blog){
-		$where = array('id_blog' => $id_blog);
-		$this->m_data_crud->hapus_data($where,'blog');
+
+		// $id_blog= $this->input->post('id_blog');
+
+		$this->m_data_crud->hapus_data($id_blog);
 		redirect('crud');
 	}
 }
