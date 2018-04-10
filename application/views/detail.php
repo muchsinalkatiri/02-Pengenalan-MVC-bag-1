@@ -11,7 +11,7 @@
           <hr>
 
           <!-- Date/Time -->
-          <p class="text-justify">Posted on <?php echo $data['tgl posting']; ?></p>
+          <p class="text-justify">Posted on <?php echo $data['tgl_posting']; ?></p>
 
           <hr>
 
@@ -22,7 +22,7 @@
 
           <!-- Post Content -->
 
-          <p><?php echo $data['content artikel']; ?></p>
+          <p><?php echo $data['content_artikel']; ?></p>
 
 
           <hr>

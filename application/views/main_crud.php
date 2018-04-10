@@ -18,16 +18,15 @@
       </tr>
       <?php 
         $no=1;
-        $num_char = 20;
-        foreach($artikel as $b){
+        foreach($query as $b){
       ?>
         <tr align="center">
           <td><?php echo $no++ ?></td>
-          <td><?php echo $b['id_blog'] ?></td>
-          <td><?php echo $b['title'] ?></td>
-          <td><?php echo substr($b['content artikel'], 0, $num_char) . '...'; ?></td>
-          <td><img style='width:100px;height:150px' src="<?php echo base_url().'Asset/image/'?><?php echo $b['images']; ?>"></td>
-          <td><?php echo $b['tgl posting'] ?></td>
+          <td><?php echo $b->id_blog; ?></td>
+          <td><?php echo $b->title; ?></td>
+          <td><?php echo substr($b->content_artikel, 0, 20) . '...'; ?></td>
+          <td><img style='width:100px;height:150px' src="<?php echo base_url().'Asset/image/'?><?php echo $b->images; ?>"></td>
+          <td><?php echo $b->tgl_posting; ?></td>
           <td>
             <a  href="#" class="btn btn-success">
               <span class="fa fa-info-circle">  Detail</span>

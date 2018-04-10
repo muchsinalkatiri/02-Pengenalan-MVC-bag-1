@@ -4,7 +4,7 @@ class M_data_artikel extends CI_Model{
 
 	function Get_artikel(){
 		$query = $this->db->query('select * from blog');
-		return $query;
+		return $query->result();
 	}
 
 	function Get_single($id){
