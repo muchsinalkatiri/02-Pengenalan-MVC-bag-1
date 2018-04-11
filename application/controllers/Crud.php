@@ -79,4 +79,9 @@ class Crud extends CI_Controller {
  		$this->m_data_crud->update($where,$data,'blog');
  		redirect('crud');
 	}
+	public function detail(){
+		$data['data'] = $this->m_data_crud->Get_single($this->uri->segment(3));
+		$this->load->view('header');
+		$this->load->view('main_detail',$data);
+	}
 }

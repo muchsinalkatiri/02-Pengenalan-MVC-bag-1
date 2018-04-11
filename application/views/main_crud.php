@@ -28,7 +28,7 @@
           <td><img style='width:100px;height:150px' src="<?php echo base_url().'Asset/image/'?><?php echo $b->images; ?>"></td>
           <td><?php echo $b->tgl_posting; ?></td>
           <td>
-            <a  href="#" class="btn btn-success">
+            <a  href="crud/detail/<?php echo $b->id_blog; ?>" class="btn btn-success">
               <span class="fa fa-info-circle">  Detail</span>
             </a>
             <a href="crud/edit/<?php echo $b->id_blog; ?>"  class="btn btn-primary">
