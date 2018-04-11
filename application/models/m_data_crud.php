@@ -43,4 +43,15 @@ class M_data_crud extends CI_Model{
 	  $this->db->where($where);
 	  $this->db->update($table,$data);
 	 } 
+
+	function hapus_gambar_saja($id_blog){
+
+		$row = $this->db->where('id_blog',$id_blog)->get('blog')->row();
+
+		$this->db->where('id_blog', $id_blog);
+
+		// $path = realpath(APPPATH . '../assert(assertion)et/image/'.$images);
+
+		unlink('Asset/image/'.$row->images);
+	}
 }

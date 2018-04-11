@@ -58,6 +58,10 @@ class Crud extends CI_Controller {
 	}
 
 	public function edit_aksi(){
+		$id_blog = $this->input->post('id_blog');
+
+		$this->m_data_crud->hapus_gambar_saja($id_blog);
+
 		$config['upload_path'] = $this->gallery_path;
 	    $config['allowed_types'] = 'jpg|png|jpeg';
 	    $config['max_size']  = '2048';
@@ -66,7 +70,6 @@ class Crud extends CI_Controller {
 		$this->load->library('upload', $config);
 		$this->upload->do_upload('images');
 
-		$id_blog = $this->input->post('id_blog');
 
 		$data = array(
      	   	'title' => $this->input->post('title'),
