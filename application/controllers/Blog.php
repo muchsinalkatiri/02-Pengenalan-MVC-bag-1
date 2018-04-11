@@ -28,11 +28,13 @@ class Blog extends CI_Controller {
 		$data1['query'] = $this->m_data_artikel->Get_artikel();
 		$this->load->view('header');
 		$this->load->view('main_blog', $data1);
+		$this->load->view('footer');
 	}
 
 	public function detail(){
 		$data['data'] = $this->m_data_artikel->Get_single($this->uri->segment(3));
 		$this->load->view('header');
 		$this->load->view('detail',$data);
+		$this->load->view('footer');
 	}
 }

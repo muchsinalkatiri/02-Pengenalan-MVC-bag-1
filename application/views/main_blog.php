@@ -6,6 +6,7 @@
 			<div class="row">
 				<?php foreach($query as $data_row) { ?>
 				<div class="col-lg-4 col-sm-6 portfolio-item">
+					<input type="hidden" class="form-control" placeholder="Group ID" name="id_blog">
 					<div class="card h-100">
 						<a href="#"><img class="card-img-top" src="<?php echo base_url().'Asset/image/'?><?php echo $data_row->images; ?>" alt=""></a>
 						<div class="card-body">

@@ -15,12 +15,14 @@ class Crud extends CI_Controller {
 		$data['query'] = $this->m_data_crud->Get_crud();
 		$this->load->view('header');
 		$this->load->view('main_crud', $data);
+		$this->load->view('footer');
 	}
 
 	public function tambah()
 	{
 		$this->load->view('header');
 		$this->load->view('main_tambah_artikel');
+		$this->load->view('footer');
 	}
 
 	public	function tambah_aksi($upload){
@@ -52,6 +54,7 @@ class Crud extends CI_Controller {
 		$data['data'] = $this->m_data_crud->Get_single($this->uri->segment(3));
 		$this->load->view('header');
 		$this->load->view('main_edit',$data);
+		$this->load->view('footer');
 	}
 
 	public function edit_aksi(){
@@ -83,5 +86,6 @@ class Crud extends CI_Controller {
 		$data['data'] = $this->m_data_crud->Get_single($this->uri->segment(3));
 		$this->load->view('header');
 		$this->load->view('main_detail',$data);
+		$this->load->view('footer');
 	}
 }
