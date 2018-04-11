@@ -44,10 +44,39 @@ class Crud extends CI_Controller {
 	}
 
 	public function hapus($id_blog){
-
-		// $id_blog= $this->input->post('id_blog');
-
 		$this->m_data_crud->hapus_data($id_blog);
 		redirect('crud');
+	}
+
+	public function edit(){
+		$data['data'] = $this->m_data_crud->Get_single($this->uri->segment(3));
+		$this->load->view('header');
+		$this->load->view('main_edit',$data);
+	}
+
+	public function edit_aksi(){
+		$config['upload_path'] = $this->gallery_path;
+	    $config['allowed_types'] = 'jpg|png|jpeg';
+	    $config['max_size']  = '2048';
+	    $config['remove_space'] = TRUE;
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('images');
+
+		$id_blog = $this->input->post('id_blog');
+
+		$data = array(
+     	   	'title' => $this->input->post('title'),
+       		'content_artikel' => $this->input->post('content_artikel'),
+        	'images' => $this->upload->file_name,
+        	'tgl_posting' => date('Y-m-d')
+        	 );
+
+		$where = array(
+  			'id_blog' => $id_blog
+ 		);
+
+ 		$this->m_data_crud->update($where,$data,'blog');
+ 		redirect('crud');
 	}
 }

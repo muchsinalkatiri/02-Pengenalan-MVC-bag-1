@@ -23,4 +23,24 @@ class M_data_crud extends CI_Model{
 
 		$this->db->delete('blog', array('id_blog' => $id_blog));
 	}
+
+	function Get_single($id){
+		$data = array();
+		$options = array('id_blog' => $id);
+		$Q = $this -> db -> get_where('blog',$options,1);
+			if($Q->num_rows()>0){
+				$data = $Q->row_array();
+			}
+		$Q ->free_result();
+		return $data; 
+	}
+
+	function edit($where,$table){  
+	 return $this->db->get_where($table,$where);
+	}
+
+	function update($where,$data,$table){
+	  $this->db->where($where);
+	  $this->db->update($table,$data);
+	 } 
 }

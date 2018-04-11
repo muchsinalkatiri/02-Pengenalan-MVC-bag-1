@@ -31,7 +31,7 @@
             <a  href="#" class="btn btn-success">
               <span class="fa fa-info-circle">  Detail</span>
             </a>
-            <a href="#"  class="btn btn-primary">
+            <a href="crud/edit/<?php echo $b->id_blog; ?>"  class="btn btn-primary">
               <span class="fa fa-edit">  Edit</span>
             </a>
             <a href="<?php echo base_url()."index.php/crud/hapus/".$b->id_blog ?> " onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')"  class="btn btn-danger">
