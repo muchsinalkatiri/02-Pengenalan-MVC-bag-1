@@ -35,7 +35,7 @@ $config['base_url'] = 'http://localhost:8080/02-Pengenalan-MVC-bag-1/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

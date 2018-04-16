@@ -3,7 +3,7 @@
       <span class="fa fa-info-circle"></span> 
         Detail Barang   
     </h3>
-    <a class="btn" href="databarang.php"><span class="fa fa-arrow-left"></span>  Kembali</a>
+    <a class="btn" href="#"><span class="fa fa-arrow-left"></span>  Kembali</a>
       
       <table class="table">
         <tr>
