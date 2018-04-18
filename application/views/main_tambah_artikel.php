@@ -1,6 +1,4 @@
 	<?php echo form_open_multipart(base_url('crud/tambah_aksi')); ?> 
-	<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-	<?php echo validation_errors(); ?>
 	<div class="container" style="padding-right: 500px; padding-top: 20px; ">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -9,6 +7,14 @@
 			</div>
 			<div class="modal-body">
 			   		<input type="hidden" class="form-control" placeholder="Group ID" name="id_blog">
+			   							<?php    
+						$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
+					?>
+					<?php echo validation_errors(); ?>
+
+					<?php echo (isset( $upload_error)) ? '<div class="alert alert-warning" role="alert">' .$upload_error. '</div>' : ''; ?>
+
+					<?php echo form_open_multipart( 'crud/tambah_aksi', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
 					<div class="form-group">
 						<label>Author</label>
 						<input name="author"  type="text" class="form-control" placeholder="penulis...">
@@ -20,7 +26,6 @@
 					<div class="form-group">
 						<label>Judul</label>
 						<input name="title"  type="text" class="form-control" placeholder="judul artikel...">
-						<?php echo form_error('title'); ?>
 					</div>
 					<div class="form-group">
 						<label>Kategori</label>	

@@ -3,7 +3,7 @@
 			<h1 class="my-4">BLOG 
 			<small>Artikel</small>
 			</h1>
-			    <a style=" margin-bottom:20px" href="crud/tambah" class="btn btn-info col-md-2 test"><span class="fa fa-plus"> Tambah Artikel</span></a>  
+			    <a style=" margin-bottom:20px" href="crud/tambah_aksi" class="btn btn-info col-md-2 test"><span class="fa fa-plus"> Tambah Artikel</span></a>  
 			<div class="row">
 				<?php foreach($query as $data_row) { ?>
 				<div class="col-lg-4 col-sm-6 portfolio-item">

@@ -25,7 +25,7 @@ class Crud extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public	function tambah_aksi($upload){
+	public	function tambah_aksi(){
 
 		$data['mode'] = 'tambah_aksi';
 
@@ -70,7 +70,7 @@ class Crud extends CI_Controller {
 	        	'images' => $this->upload->file_name,
 	        	'tgl_posting' => date('Y-m-d')
 	        	 );
-	    	$this->m_data_crud->insert($data);
+	    	$this->m_data_crud->insert($data, 'blog');
 	    	redirect('blog');
 	    }
 

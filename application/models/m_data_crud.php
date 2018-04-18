@@ -7,8 +7,8 @@ class M_data_crud extends CI_Model{
 		return $query->result(); // Kode ini digunakan untuk mengembalikan hasil operasi $res menjadi sebuah array
 	}
  
-	function Insert($data){
-		$this->db->insert('blog', $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
+	function Insert($data,$table){
+		$this->db->insert($table, $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
         
 	}
 	function hapus_data($id_blog){
