@@ -27,22 +27,53 @@ class Crud extends CI_Controller {
 
 	public	function tambah_aksi($upload){
 
-		$config['upload_path'] = $this->gallery_path;
-	    $config['allowed_types'] = 'jpg|png|jpeg';
-	    $config['max_size']  = '2048';
-	    $config['remove_space'] = TRUE;
+		$data['mode'] = 'tambah_aksi';
 
-		$this->load->library('upload', $config);
-		$this->upload->do_upload('images');
+		$this->load->model('m_data_crud');
 
-    	$data = array(
-     	   	'title' => $this->input->post('title'),
-       		'content_artikel' => $this->input->post('content_artikel'),
-        	'images' => $this->upload->file_name,
-        	'tgl_posting' => date('Y-m-d')
-        	 );
-    	$this->m_data_crud->insert($data);
-    	redirect('crud');
+	    $this->load->helper('form');
+	    $this->load->library('form_validation');
+
+	    $this->form_validation->set_rules('title', 'Judul', 'required|is_unique[blog.title]',
+			array(
+				'required' 		=> 'Isi %s donk, males amat.',
+				'is_unique' 	=> 'Judul ' .$this->input->post('title'). ' sudah ada bosque.'
+			));
+
+		$this->form_validation->set_rules('content_artikel', 'Konten', 'required|min_length[8]',
+			array(
+				'required' 		=> 'Isi %s lah, hadeeh.',
+				'min_length' 	=> 'Isi %s kurang panjang bosque.',
+			));
+
+		 if ($this->form_validation->run() === FALSE){
+			$this->load->view('header');
+			$this->load->view('main_tambah_artikel');
+			$this->load->view('footer');
+
+	    }else{
+
+			$config['upload_path'] = $this->gallery_path;
+		    $config['allowed_types'] = 'jpg|png|jpeg';
+		    $config['max_size']  = '2048';
+		    $config['remove_space'] = TRUE;
+
+			$this->load->library('upload', $config);
+			$this->upload->do_upload('images');
+
+	    	$data = array(
+	     	   	'author' => $this->input->post('author'),
+	     	   	'email_author' => $this->input->post('email_author'),
+	     	   	'title' => $this->input->post('title'),
+	     	   	'kategori' => $this->input->post('kategori'),
+	       		'content_artikel' => $this->input->post('content_artikel'),
+	        	'images' => $this->upload->file_name,
+	        	'tgl_posting' => date('Y-m-d')
+	        	 );
+	    	$this->m_data_crud->insert($data);
+	    	redirect('blog');
+	    }
+
 	}
 
 	public function hapus($id_blog){
@@ -72,7 +103,10 @@ class Crud extends CI_Controller {
 
 
 		$data = array(
+     	   	'author' => $this->input->post('author'),
+     	   	'email_author' => $this->input->post('email_author'),
      	   	'title' => $this->input->post('title'),
+     	   	'kategori' => $this->input->post('kategori'),
        		'content_artikel' => $this->input->post('content_artikel'),
         	'images' => $this->upload->file_name,
         	'tgl_posting' => date('Y-m-d')
