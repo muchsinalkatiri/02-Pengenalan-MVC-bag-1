@@ -4,11 +4,11 @@ class M_data_crud extends CI_Model{
 
 	function Get_crud(){
 		$query = $this->db->query('select * from blog');
-		return $query->result(); // Kode ini digunakan untuk mengembalikan hasil operasi $res menjadi sebuah array
+		return $query->result(); 
 	}
  
 	function Insert($data,$table){
-		$this->db->insert($table, $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
+		$this->db->insert($table, $data); 
         
 	}
 	function hapus_data($id_blog){

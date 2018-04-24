@@ -23,8 +23,8 @@
           <td><?php echo $data['title'] ?></td>
         </tr>
         <tr>
-          <td>Kategori</td>
-          <td><?php echo $data['kategori'] ?></td>
+          <td>sumber</td>
+          <td><?php echo $data['sumber'] ?></td>
         </tr>
         <tr>
           <td>Conten Artikel</td>

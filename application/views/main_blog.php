@@ -13,6 +13,9 @@
 						<div class="card-body">
 							<h4 class="card-title">
 							<a href="blog/detail/<?php echo $data_row->id_blog; ?> "><?php echo $data_row->title; ?></a>
+							<a href="crud/edit_aksi/<?php echo $data_row->id_blog; ?>"  class="btn btn-primary">
+              <span class="fa fa-edit"></span>
+            </a>
 							</h4>
 							<p class="card-text"><?php echo substr($data_row->content_artikel, 0, 100) . '...'; ?></p>
 						</div>

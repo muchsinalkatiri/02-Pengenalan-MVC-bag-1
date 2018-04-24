@@ -1,4 +1,4 @@
-	<?php echo form_open_multipart(base_url('index.php/crud/edit_aksi')); ?> 
+	<?php echo form_open_multipart(base_url('crud/edit_aksi/$data_row->id_blog')); ?> 
 	<div class="container" style="padding-right: 500px; padding-top: 20px; ">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -7,26 +7,29 @@
 			</div>
 			<div class="modal-body">
 			   		<input type="hidden" class="form-control" placeholder="Group ID" name="id_blog" value="<?php echo $data['id_blog']; ?>">
-										<div class="form-group">
+						<div class="form-group">
 						<label>Author</label>
-						<input name="author" required="required" type="text" class="form-control" value="<?php echo $data['author']; ?>">
+						<input name="author"  type="text" class="form-control" value="<?php echo $data['author']; ?>">
 					</div>
+					<?php    
+						$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
+					?>
+					<?php echo validation_errors(); ?>
+
+					<?php echo (isset( $upload_error)) ? '<div class="alert alert-warning" role="alert">' .$upload_error. '</div>' : ''; ?>
+
+					<?php echo form_open_multipart( 'crud/edit_aksi', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
 					<div class="form-group">
 						<label>Email Author</label>
-						<input name="email_author" required="required" type="Email" class="form-control" value="<?php echo $data['email_author']; ?>">
+						<input name="email_author"  type="Email" class="form-control" value="<?php echo $data['email_author']; ?>">
 					</div>
 					<div class="form-group">
 						<label>Judul</label>
-						<input  name="title" required="required" type="text" class="form-control" value="<?php echo $data['title']; ?>">
+						<input  name="title"  type="text" class="form-control" value="<?php echo $data['title']; ?>">
 					</div>
 					<div class="form-group">
-						<label>Kategori</label>	
-						<br>
-						<select name="kategori" class="form-control" value="<?php echo $data['kategori']; ?>">
-			            	<option value="film">Film</option>
-			            	<option value="series">Series</option>
-			            	<option value="game">Game</option>
-						</select>
+						<label>Sumber</label>
+						<input  name="sumber"  type="text" class="form-control" value="<?php echo $data['sumber']; ?>">
 					</div>
 					<div class="form-group">
 					    <label for="exampleFormControlTextarea1">Content Artikel</label>
@@ -34,7 +37,7 @@
 					</div>
 					<div class="form-group">
 						<label>Gambar</label>
-						<input name="images" required="required" type="file" class="form-control">
+						<input name="images"  type="file" class="form-control">
 					</div>
 					</div>
 					<div class="modal-footer">

@@ -7,7 +7,7 @@
 			</div>
 			<div class="modal-body">
 			   		<input type="hidden" class="form-control" placeholder="Group ID" name="id_blog">
-			   							<?php    
+			   		<?php    
 						$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
 					?>
 					<?php echo validation_errors(); ?>
@@ -16,11 +16,11 @@
 
 					<?php echo form_open_multipart( 'crud/tambah_aksi', array('class' => 'needs-validation', 'novalidate' => '') ); ?>
 					<div class="form-group">
-						<label>Author</label>
+						<label>Penulis</label>
 						<input name="author"  type="text" class="form-control" placeholder="penulis...">
 					</div>
 					<div class="form-group">
-						<label>Email Author</label>
+						<label>Email Penulis</label>
 						<input name="email_author"  type="Email" class="form-control" placeholder="email penulis...">
 					</div>
 					<div class="form-group">
@@ -28,17 +28,22 @@
 						<input name="title"  type="text" class="form-control" placeholder="judul artikel...">
 					</div>
 					<div class="form-group">
-						<label>Kategori</label>	
-						<br>
-						<select name="kategori" class="form-control">
-			            	<option value="film">Film</option>
-			            	<option value="series">Series</option>
-			            	<option value="game">Game</option>
-						</select>
+						<label>Sumber</label>
+						<input name="sumber"  type="text" class="form-control" placeholder="Sumber...">
 					</div>
 					<div class="form-group">
 					    <label for="exampleFormControlTextarea1">Content Artikel</label>
 					    <textarea class="form-control" name="content_artikel" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Kategori</label>
+						<select name="cat_id" class="form-control" required>
+							<option value="">Pilih Kategori</option>
+							<?php foreach($kategori as $category): ?>
+							<option value="<?php echo $category->id_kategori; ?>"><?php echo $category->Kat_name; ?></option>
+							<?php endforeach; ?>
+						</select>
+						<div class="invalid-feedback">Pilih dulu kategorinya gan</div>
 					</div>
 					<div class="form-group">
 						<label>Gambar</label>
