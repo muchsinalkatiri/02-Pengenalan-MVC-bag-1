@@ -1,4 +1,4 @@
-	<?php echo form_open_multipart(base_url('crud/edit_aksi/$data_row->id_blog')); ?> 
+	<?php echo form_open_multipart(base_url('crud/edit_aksi/')); ?> 
 	<div class="container" style="padding-right: 500px; padding-top: 20px; ">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -34,6 +34,11 @@
 					<div class="form-group">
 					    <label for="exampleFormControlTextarea1">Content Artikel</label>
 					    <textarea class="form-control" name="content_artikel" id="exampleFormControlTextarea1" rows="5" ><?php echo $data['content_artikel']; ?></textarea>
+					</div>
+					<div class="form-group">
+						<label>Kategori</label>
+						<?php echo form_dropdown('id_kategori', $kategori, set_value('id_kategori'), 'class="form-control" required' ); ?>
+						<div class="invalid-feedback">Pilih dulu kategorinya gan</div>
 					</div>
 					<div class="form-group">
 						<label>Gambar</label>

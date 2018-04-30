@@ -14,6 +14,7 @@ class Crud extends CI_Controller {
 
 	public function index()
 	{
+		
 		$data['query'] = $this->m_data_crud->Get_crud();
 		$this->load->view('header');
 		$this->load->view('main_crud', $data);
@@ -35,8 +36,7 @@ class Crud extends CI_Controller {
 
 	    $this->load->helper('form');
 	    $this->load->library('form_validation');
-
-	    $data['kategori'] = $this->m_data_kategori->get_all_kategori();
+		$data['kategori'] = $this->m_data_kategori->generate_cat_dropdown();
 
 		$aturan = array(
 		        array(
@@ -88,7 +88,7 @@ class Crud extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE){
 			$this->load->view('header');
-			$this->load->view('main_tambah_artikel');
+			$this->load->view('main_tambah_artikel',$data);
 			$this->load->view('footer');
 
 	    }else{
@@ -103,6 +103,7 @@ class Crud extends CI_Controller {
 
 	    	$data = array(
 	     	   	'author' => $this->input->post('author'),
+				'id_kategori' => $this->input->post('id_kategori'),
 	     	   	'email_author' => $this->input->post('email_author'),
 	     	   	'title' => $this->input->post('title'),
 	     	   	'sumber' => $this->input->post('sumber'),
@@ -121,20 +122,21 @@ class Crud extends CI_Controller {
 		redirect('crud');
 	}
 
-	public function edit(){
-		$data['data'] = $this->m_data_crud->Get_single($this->uri->segment(3));
-		$this->load->view('header');
-		$this->load->view('main_edit',$data);
-		$this->load->view('footer');
-	}
 
-	public function edit_aksi($id){
+
+	public function edit_aksi($id = NULL){
 		$data['mode'] = 'Edit_aksi';
 
 		$this->load->model('m_data_crud');
 
 		$this->load->helper('form');
 	    $this->load->library('form_validation');
+
+
+
+		$data['data'] = $this->m_data_crud->Get_single($id);
+
+		$data['kategori'] = $this->m_data_kategori->generate_cat_dropdown();
 
 		$aturan = array(
 		        array(
@@ -188,7 +190,6 @@ class Crud extends CI_Controller {
 			));
 		}
 		
-			$data['data'] = $this->m_data_crud->Get_single($id);
 
 		if ($this->form_validation->run() === FALSE){
 			$this->load->view('header');
@@ -212,6 +213,7 @@ class Crud extends CI_Controller {
 			$data = array(
 		 	   	'author' => $this->input->post('author'),
 		 	   	'email_author' => $this->input->post('email_author'),
+				'id_kategori' => $this->input->post('id_kategori'),
 		 	   	'title' => $this->input->post('title'),
 		 	   	'sumber' => $this->input->post('sumber'),
 		   		'content_artikel' => $this->input->post('content_artikel'),

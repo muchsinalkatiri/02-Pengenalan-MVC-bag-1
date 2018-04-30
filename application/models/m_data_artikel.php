@@ -3,8 +3,15 @@
 class M_data_artikel extends CI_Model{
 
 	function Get_artikel(){
-		$query = $this->db->query('select * from blog');
-		return $query->result();
+        $this->db->order_by('blog.tgl_posting', 'DESC');
+
+        // Inner Join dengan table Categories
+        $this->db->join('kategori', 'kategori.id_kategori = blog.id_kategori');
+        
+        $query = $this->db->get('blog');
+
+    	// Return dalam bentuk object
+    	return $query->result();
 	}
 
 	function Get_single($id){

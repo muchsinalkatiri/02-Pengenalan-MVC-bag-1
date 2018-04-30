@@ -12,4 +12,9 @@
 .mk-jumbotron{
 	background: #e6e6e6 !important;
 }
-.m
+html, body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+

@@ -37,12 +37,7 @@
 					</div>
 					<div class="form-group">
 						<label>Kategori</label>
-						<select name="cat_id" class="form-control" required>
-							<option value="">Pilih Kategori</option>
-							<?php foreach($kategori as $category): ?>
-							<option value="<?php echo $category->id_kategori; ?>"><?php echo $category->Kat_name; ?></option>
-							<?php endforeach; ?>
-						</select>
+						<?php echo form_dropdown('id_kategori', $kategori, set_value('id_kategori'), 'class="form-control" required' ); ?>
 						<div class="invalid-feedback">Pilih dulu kategorinya gan</div>
 					</div>
 					<div class="form-group">

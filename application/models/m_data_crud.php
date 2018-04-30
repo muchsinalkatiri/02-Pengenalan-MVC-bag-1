@@ -54,4 +54,15 @@ class M_data_crud extends CI_Model{
 
 		unlink('Asset/image/'.$row->images);
 	}
+
+	public function get_artikel_by_category($id_kategori)
+    {
+
+        $this->db->order_by('blog.id_blog', 'DESC');
+
+        $this->db->join('kategori', 'kategori.id_kategori = blog.id_kategori');
+        $query = $this->db->get_where('blog', array('blog.id_kategori' => $id_kategori));
+  
+        return $query->result();
+    }
 }

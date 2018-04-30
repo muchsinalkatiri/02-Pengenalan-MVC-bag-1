@@ -10,9 +10,12 @@ class Blog extends CI_Controller {
 
 	public function index()
 	{
-		$data1['query'] = $this->m_data_artikel->Get_artikel();
+		$data['page_title'] = 'List Artikel'; 
+		
+		// Dapatkan data dari model Blog
+		$data['all_artikel'] = $this->m_data_artikel->Get_artikel();
 		$this->load->view('header');
-		$this->load->view('main_blog', $data1);
+		$this->load->view('main_blog', $data);
 		$this->load->view('footer');
 	}
 
