@@ -30,7 +30,7 @@ class Crud extends CI_Controller {
 
 	public	function tambah_aksi(){
 
-		$data['mode'] = 'tambah_aksi';
+		$data['page_title'] = 'tambah_aksi';
 
 		$this->load->model('m_data_crud');
 
@@ -78,13 +78,13 @@ class Crud extends CI_Controller {
 				'min_length' 	=> 'Isi kontent %s kurang panjang .',
 			));
 
-		if (empty($_FILES['images']['name']))
-		{
-    		$this->form_validation->set_rules('images', 'Gambar', 'required',		
-    		array(
-				'required' 		=> 'Kolom %s tidak boleh kosong.'
-			));
-		}
+		// if (empty($_FILES['images']['name']))
+		// {
+  //   		$this->form_validation->set_rules('images', 'Gambar', 'required',		
+  //   		array(
+		// 		'required' 		=> 'Kolom %s tidak boleh kosong.'
+		// 	));
+		// }
 
 		if ($this->form_validation->run() === FALSE){
 			$this->load->view('header');
@@ -92,28 +92,60 @@ class Crud extends CI_Controller {
 			$this->load->view('footer');
 
 	    }else{
+		    	if ( isset($_FILES['images']) && $_FILES['images']['size'] > 0 )
+	    		{
+	    			// Konfigurasi folder upload & file yang diijinkan
+	    			// Jangan lupa buat folder uploads di dalam ci3-course
+					$config['upload_path'] = $this->gallery_path;
+				    $config['allowed_types'] = 'jpg|png|jpeg';
+				    $config['max_size']  = '2048';
+				    $config['remove_space'] = TRUE;
+	    	        // Load library upload
+	    	        $this->load->library('upload', $config);
+	    	        // Apakah file berhasil diupload?
+	    	        if ( ! $this->upload->do_upload('images'))
+	    	        {
+	    	        	$data['upload_error'] = $this->upload->display_errors();
+	    	        	$post_image = '';
+	    	        	// Kita passing pesan error upload ke view supaya user mencoba upload ulang
+						$this->load->view('header');
+						$this->load->view('main_tambah_artikel',$data);
+						$this->load->view('footer');
+	    	        } else {
+	    	        	// Simpan nama file-nya jika berhasil diupload
+	    	            $img_data = $this->upload->data();
+    	            	$post_image = $img_data['file_name'];
+	    	        	
+	    	        }
+	    		} 
+	    		else {
+	    			// User tidak upload gambar, jadi kita kosongkan field ini
+	    			$post_image = '';
+	    		}
+		    	// Memformat slug sebagai alamat URL, 
+		    	// Misal judul: "Hello World", kita format menjadi "hello-world"
+		    	// Nantinya, URL blog kita menjadi mudah dibaca 
+		    	// http://localhost/ci3-course/blog/hello-world
+		    	// $slug = url_title($this->input->post('tipe'), 'dash', TRUE);
 
-			$config['upload_path'] = $this->gallery_path;
-		    $config['allowed_types'] = 'jpg|png|jpeg';
-		    $config['max_size']  = '2048';
-		    $config['remove_space'] = TRUE;
+		    	$data = array(
+		     	   	'author' => $this->input->post('author'),
+					'id_kategori' => $this->input->post('id_kategori'),
+		     	   	'email_author' => $this->input->post('email_author'),
+		     	   	'title' => $this->input->post('title'),
+		     	   	'sumber' => $this->input->post('sumber'),
+		       		'content_artikel' => $this->input->post('content_artikel'),
+		        	'images' => $post_image,
+		        	'tgl_posting' => date('Y-m-d')
+		        	 
+		    	);
+		    	// Jika tidak ada error upload gambar, maka kita insert ke database via model Blog 
+		    	if( empty($data['upload_error']) ) {
+		    		$this->m_data_crud->insert($data, 'blog');
 
-			$this->load->library('upload', $config);
-			$this->upload->do_upload('images');
-
-	    	$data = array(
-	     	   	'author' => $this->input->post('author'),
-				'id_kategori' => $this->input->post('id_kategori'),
-	     	   	'email_author' => $this->input->post('email_author'),
-	     	   	'title' => $this->input->post('title'),
-	     	   	'sumber' => $this->input->post('sumber'),
-	       		'content_artikel' => $this->input->post('content_artikel'),
-	        	'images' => $this->upload->file_name,
-	        	'tgl_posting' => date('Y-m-d')
-	        	 );
-	    	$this->m_data_crud->insert($data, 'blog');
-	    	redirect('blog');
-	    }
+		    	redirect('blog');
+		    	}
+		    }
 
 	}
 
@@ -181,52 +213,68 @@ class Crud extends CI_Controller {
 				'required' 		=> 'Kolom %s tidak boleh kosong.',
 				'min_length' 	=> 'Isi kontent %s kurang panjang .',
 			));
-
-		if (empty($_FILES['images']['name']))
-		{
-    		$this->form_validation->set_rules('images', 'Gambar', 'required',		
-    		array(
-				'required' 		=> 'Kolom %s tidak boleh kosong.'
-			));
-		}
 		
 
 		if ($this->form_validation->run() === FALSE){
 			$this->load->view('header');
-			$this->load->view('main_edit',$data);
+			$this->load->view('main_edit', $data);
 			$this->load->view('footer');
 
 	    }else{
-			$id_blog = $this->input->post('id_blog');
+	    	if ( isset($_FILES['images']) && $_FILES['images']['size'] > 0 ){
+	    		$id_blog = $this->input->post('id_blog');
 
-			$this->m_data_crud->hapus_gambar_saja($id_blog);
+				$this->m_data_crud->hapus_gambar_saja($id_blog);
 
-			$config['upload_path'] = $this->gallery_path;
-		    $config['allowed_types'] = 'jpg|png|jpeg';
-		    $config['max_size']  = '2048';
-		    $config['remove_space'] = TRUE;
+				$config['upload_path'] = $this->gallery_path;
+			    $config['allowed_types'] = 'jpg|png|jpeg';
+			    $config['max_size']  = '2048';
+			    $config['remove_space'] = TRUE;
 
-			$this->load->library('upload', $config);
-			$this->upload->do_upload('images');
+				$this->load->library('upload', $config);
+				$this->upload->do_upload('images');
 
 
-			$data = array(
-		 	   	'author' => $this->input->post('author'),
-		 	   	'email_author' => $this->input->post('email_author'),
-				'id_kategori' => $this->input->post('id_kategori'),
-		 	   	'title' => $this->input->post('title'),
-		 	   	'sumber' => $this->input->post('sumber'),
-		   		'content_artikel' => $this->input->post('content_artikel'),
-		    	'images' => $this->upload->file_name,
-		    	'tgl_posting' => date('Y-m-d')
-		    	 );
+				$data = array(
+			 	   	'author' => $this->input->post('author'),
+			 	   	'email_author' => $this->input->post('email_author'),
+					'id_kategori' => $this->input->post('id_kategori'),
+			 	   	'title' => $this->input->post('title'),
+			 	   	'sumber' => $this->input->post('sumber'),
+			   		'content_artikel' => $this->input->post('content_artikel'),
+			    	'images' => $this->upload->file_name,
+			    	'tgl_posting' => date('Y-m-d')
+			    	 );
 
-			$where = array(
-					'id_blog' => $id_blog
-				);
+				$where = array(
+						'id_blog' => $id_blog
+					);
 
-				$this->m_data_crud->update($where,$data,'blog');
-				redirect('crud');
+					$this->m_data_crud->update($where,$data,'blog');
+					redirect('crud');
+	    	}
+	    	else{
+				$id_blog = $this->input->post('id_blog');
+
+				$data = array(
+			 	   	'author' => $this->input->post('author'),
+			 	   	'email_author' => $this->input->post('email_author'),
+					'id_kategori' => $this->input->post('id_kategori'),
+			 	   	'title' => $this->input->post('title'),
+			 	   	'sumber' => $this->input->post('sumber'),
+			   		'content_artikel' => $this->input->post('content_artikel'),
+			    	// 'images' => $this->upload->file_name,
+			    	'tgl_posting' => date('Y-m-d')
+			    	 );
+
+				$where = array(
+						'id_blog' => $id_blog
+					);
+
+					$this->m_data_crud->update($where,$data,'blog');
+					redirect('crud');
+	    	}
+			
 		}
 	}
 	public function detail(){
