@@ -21,11 +21,21 @@
             </a>
 							</h4>
 							<p class="card-text"><?php echo substr($data_row->content_artikel, 0, 100) . '...'; ?></p>
+							.
 						</div>
 					</div>
 				</div>
 				<?php } ?>
 			</div>
+			<br>
+			<br>
+						<?php
+						 // $links ini berasal dari fungsi pagination
+						 // Jika $links ada (data melebihi jumlah max per page), maka tampilkan
+						 if (isset($links)) {
+						 echo $links;
+						 }
+						 ?>
 			<!-- /.row -->
 		
 		</div>

@@ -2,9 +2,25 @@
 
 class M_data_crud extends CI_Model{
 
-	function Get_crud(){
-		$query = $this->db->query('select * from blog');
-		return $query->result(); 
+	function Get_crud($limit = FALSE, $offset = FALSE){
+	// Jika variable $limit ada pada parameter maka kita limit query-nya
+		if ( $limit ) {
+		$this->db->limit($limit, $offset);
+		}
+		// Urutkan berdasar tanggal
+		$this->db->order_by('blog.tgl_posting', 'DESC');
+		// Inner Join dengan table Categories
+		$this->db->join('kategori', 'kategori.id_kategori = blog.id_kategori');
+
+		$query = $this->db->get('blog');
+		// Return dalam bentuk object
+		return $query->result();
+	}
+	
+	public function get_total()
+	{
+	 // Dapatkan jumlah total artikel
+	 return $this->db->count_all("blog");
 	}
  
 	function Insert($data,$table){

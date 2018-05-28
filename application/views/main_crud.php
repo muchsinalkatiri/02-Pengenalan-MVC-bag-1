@@ -8,7 +8,6 @@
 
     <table class="table table-hover" >
       <tr align="center">
-        <th class="col-md-0">No</th>
         <th class="col-md-0">ID</th>
         <th class="col-md-0">Title</th>
         <th class="col-md-0">Conten</th>
@@ -21,7 +20,6 @@
         foreach($query as $b){
       ?>
         <tr align="center">
-          <td><?php echo $no++ ?></td>
           <td><?php echo $b->id_blog; ?></td>
           <td><?php echo $b->title; ?></td>
           <td><?php echo substr($b->content_artikel, 0, 20) . '...'; ?></td>
@@ -43,6 +41,15 @@
       }
       ?>
     </table>
+    <br>
+      <br>
+            <?php
+             // $links ini berasal dari fungsi pagination
+             // Jika $links ada (data melebihi jumlah max per page), maka tampilkan
+             if (isset($links)) {
+             echo $links;
+             }
+             ?>
   </div>
 	</body>
 </html>
