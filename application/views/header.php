@@ -7,8 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url().'Asset/css/kustom.css'; ?>">
 		<link href="<?php echo base_url(). 'Asset/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="<?php echo base_url().'Asset/js/bootstrap.min.js'; ?>"></script>
-		<script src="<?php echo base_url() ?>Assets/js/jquery-1.9.1.min.js"></script>
-		<script src="<?php echo base_url() ?>Assets/js/bootstrap.js"></script>
+		<script src="<?php echo base_url() ?>Asset/js/jquery-1.9.1.min.js"></script>
+		<script src="<?php echo base_url() ?>Asset/js/bootstrap.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
@@ -30,6 +30,18 @@
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url().'kategori'; ?>">Kategori</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url().'datatables'; ?>">datatabel</a>
+					</li>
+<!-- 					<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          DataT
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="<?php echo site_url() ?>datatables">Basic</a>
+                            <a class="dropdown-item" href="<?php echo site_url() ?>datatables/view_json">JSON</a>
+                        </div>
+                    </li> -->
 					<form class="form-inline my-2 my-lg-0">
       					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       					<button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>

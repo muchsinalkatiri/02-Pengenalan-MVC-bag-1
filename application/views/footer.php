@@ -6,8 +6,9 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url() ?>Asset/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>Asset/js/holder.min.js"></script>
+    <script src="<?php echo base_url() ?>Asset/js/custom.min.js"></script>
 
   </body>
 

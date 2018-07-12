@@ -2,10 +2,10 @@
 			<!-- Page Heading -->
 			<h1 class="my-4"><?php echo $page_title ?>
 			</h1>
-			    <a style=" margin-bottom:20px" href="crud/tambah_aksi" class="btn btn-info col-md-2 test"><span class="fa fa-plus"> Tambah Artikel</span></a>  
+			    <a style=" margin-bottom:10px; " href="crud/tambah_aksi" class="btn btn-info col-md-2 test"><span class="fa fa-plus"> Tambah Artikel</span></a>  
 			<div class="row">
 				<?php foreach($all_artikel as $data_row) { ?>
-				<div class="col-lg-4 col-sm-6 portfolio-item">
+				<div style="padding-bottom: 20px; " class="col-lg-4 col-sm-6 portfolio-item">
 					<input type="hidden" class="form-control" placeholder="Group ID" name="id_blog">
 					<div class="card h-100">
 						<?php if( $data_row->images ) : ?>

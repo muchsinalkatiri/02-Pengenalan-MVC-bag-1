@@ -14,7 +14,7 @@ class Blog extends CI_Controller {
 
 	 // Dapatkan data dari model Blog dengan pagination
 	 // Jumlah artikel per halaman
-	 $limit_per_page = 3;
+	 $limit_per_page = 9;
 	 // URI segment untuk mendeteksi "halaman ke berapa" dari URL
 	 $start_index = ( $this->uri->segment(3) ) ? $this->uri->segment(3) : 0;
 	 // Dapatkan jumlah data
