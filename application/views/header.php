@@ -30,10 +30,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url().'kategori'; ?>">Kategori</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<?php echo base_url().'datatables'; ?>">datatabel</a>
-					</li>
-<!-- 					<li class="nav-item dropdown">
+					<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           DataT
                         </a>
@@ -41,7 +38,7 @@
                             <a class="dropdown-item" href="<?php echo site_url() ?>datatables">Basic</a>
                             <a class="dropdown-item" href="<?php echo site_url() ?>datatables/view_json">JSON</a>
                         </div>
-                    </li> -->
+                    </li>
 					<form class="form-inline my-2 my-lg-0">
       					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       					<button class="btn btn-outline my-2 my-sm-0" type="submit">Search</button>
@@ -51,6 +48,12 @@
 					<ul class="navbar-nav mr-auto nav nav-pills">
 						<li class="nav-item">
 							<a class="nav-link active mk-tombol_about" href="<?php echo base_url().'about'; ?>">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active mk-tombol_about" href="<?php echo base_url().'user/register'; ?>">Register</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active mk-tombol_about" href="<?php echo base_url().'user/login'; ?>">Login</a>
 						</li>
 					</ul>
 				</form>
