@@ -1,4 +1,6 @@
-
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<br><br><br><br><br><br>
+<?php echo form_open('user/login'); ?>
 	<div class="container">
 	<div class="col-lg-8 offset-lg-4">
 	<div class="row">

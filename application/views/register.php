@@ -9,7 +9,12 @@
 		</center>
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
-
+					<?php
+						$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">', '</div>');
+					?>
+					<?php echo validation_errors(); ?>
+					<?php echo form_open('user/register', array('class' => 'needs-validation', 'novalidate' => '')); ?>
+					<div class="form-group">
 						<label>Nama Lengkap</label>
 						<input type="text" class="form-control" name="nama" value="<?php echo set_value('nama') ?>" placeholder="Nama Lengkap">
 					</div>
@@ -61,6 +66,11 @@
 </main>
 <br><br>
 
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/custom.css">
+
+	<script src="<?php echo base_url() ?>assets/js/jquery-1.9.1.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
     <script src="<?php echo base_url() ?>assets/js/holder.min.js"></script>
